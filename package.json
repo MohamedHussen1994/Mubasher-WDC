@@ -5,5 +5,9 @@
   "main": "index.js",
   "repository": "https://github.com/MohamedHussen1994/tableau-wdc-tutorial-part-1",
   "author": "Mohammed Hussen <mohamedhussen1994@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1"
+  }
 }
