@@ -1,0 +1,9 @@
+{
+  "name": "Tableau-WDC-API",
+  "version": "1.0.0",
+  "description": "this is used to get the data from mubasher api to tableau using tableau web data connector",
+  "main": "index.js",
+  "repository": "https://github.com/MohamedHussen1994/tableau-wdc-tutorial-part-1",
+  "author": "Mohammed Hussen <mohamedhussen1994@gmail.com>",
+  "license": "MIT"
+}
