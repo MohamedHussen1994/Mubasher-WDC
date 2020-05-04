@@ -25,8 +25,6 @@
     // This function is called when data is required from the
     // Web Data Connector.
     myConnector.getData = function (table, doneCallback) {
-      tableData = [];
-      tableData.push({"Country": "before2", "Year": "2010", "GDP": "1.2"});
       var request;
       request = $.ajax({
         url: "https://cors-anywhere.herokuapp.com/" + "https://www.mubasher.info/api/1/stocks/prices",
@@ -35,28 +33,23 @@
       });
    
       // Callback handler for success
-   
       request.done(function (response, textStatus, jqXHR){
-         //console.log(response)
          var jsonObject = response;
-         //tableData = [];
-         //tableData.push({"Country": "inbetween", "Year": "2010", "GDP": "1.2"});
+         tableData = [];
          jsonObject.prices.forEach(
             function(item, index) {
             var value = item.value;
             const volume = item.volume;
             var name = item.name;
-            tableData.push({"Country": "name", "Year": "2010", "GDP": "1.2"});
+            tableData.push({"Country": name, "Year": volume, "GDP": value});
             }
          );
-         //tableData.push({"Country": "inbetween2", "Year": "2010", "GDP": "1.2"});
-         //console.log(tableData)
          table.appendRows(tableData);
          doneCallback();
             });
       
     };
-  
+    
     // This is reqired to register the Web Data Connector.
     tableau.registerConnector(myConnector);
     // Once the document has loaded we will attached functionality
