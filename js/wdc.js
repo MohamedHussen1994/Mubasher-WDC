@@ -50,7 +50,7 @@
          );*/
          tableData.push({"Country": "inbetween2", "Year": "2010", "GDP": "1.2"});
          console.log(tableData)
-         //table.appendRows(tableData);
+         table.appendRows(tableData);
             });
       tableData.push({"Country": "after2", "Year": "2010", "GDP": "1.2"});
   
