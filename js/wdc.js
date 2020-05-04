@@ -1,6 +1,6 @@
 (function () {
     var myConnector = tableau.makeConnector();
-  
+    
     // This creates the Web Data Connector schema that
     // describes the information returned by hte WDC.
     myConnector.getSchema = function (schemaCallback) {
