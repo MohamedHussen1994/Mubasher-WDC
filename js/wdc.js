@@ -37,7 +37,7 @@
       // Callback handler for success
    
       request.done(function (response, textStatus, jqXHR){
-         //console.log(response)
+         console.log(response)
          var jsonObject = response;
 
             jsonObject.prices.forEach(
