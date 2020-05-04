@@ -49,7 +49,7 @@
                var value = item.value;
                const volume = item.volume;
                var name = item.name;
-               tableData.push({"Country": name, "Year": volume, "GDP": value})
+               tableData.push({"Country": "name", "Year": "2010", "GDP": "1.2"})
                }
             );
                });
