@@ -53,6 +53,11 @@
       request.fail(function (jqXHR, textStatus, errorThrown){
          tableData.push({"Country": "fail", "Year": "2010", "GDP": "1.2"});
       });
+
+      request.always(function () {
+         // Reenable the inputs
+         tableData.push({"Country": "always", "Year": "2010", "GDP": "1.2"});
+     });
   
        table.appendRows(tableData);
        doneCallback();
