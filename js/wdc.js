@@ -27,32 +27,32 @@
     // Web Data Connector.
     myConnector.getData = function (table, doneCallback) {
        tableData = [];
-  
-       // We are manually adding data, but in future tutorials
-       // we will connect to an external data source using the
-       // ajax function.
-       tableData.push(
-          {"Country": "US", "Year": "2002", "GDP": "10.98"},
-          {"Country": "China", "Year": "2002", "GDP": "1.45"},
-          {"Country": "Japan", "Year": "2002", "GDP": "3.98"},
-          {"Country": "Germany", "Year": "2002", "GDP": "2.01"},
-          {"Country": "France", "Year": "2002", "GDP": "1.45"},
-          {"Country": "United Kingdom", "Year": "2002", "GDP": "1.62"},
-          {"Country": "Brazil", "Year": "2002", "GDP": "0.50"},
-          {"Country": "Russian Federation", "Year": "2002", "GDP": "0.35"},
-          {"Country": "Italy", "Year": "2002", "GDP": "1.23"},
-          {"Country": "India", "Year": "2002", "GDP": "0.52"},
-          {"Country": "US", "Year": "2012", "GDP": "16.24"},
-          {"Country": "China", "Year": "2012", "GDP": "8.23"},
-          {"Country": "Japan", "Year": "2012", "GDP": "5.94"},
-          {"Country": "Germany", "Year": "2012", "GDP": "3.43"},
-          {"Country": "France", "Year": "2012", "GDP": "2.61"},
-          {"Country": "United Kingdom", "Year": "2012", "GDP": "2.46"},
-          {"Country": "Brazil", "Year": "2012", "GDP": "2.25"},
-          {"Country": "Russian Federation", "Year": "2012", "GDP": "2.02"},
-          {"Country": "Italy", "Year": "2012", "GDP": "2.01"},
-          {"Country": "India", "Year": "2012", "GDP": "1.86"}
-       );
+       var request;
+       request = $.ajax({
+         url: "https://cors-anywhere.herokuapp.com/" + "https://www.mubasher.info/api/1/stocks/prices",
+         type: "GET",
+         data: {country: 'eg'}
+      });
+   
+      // Callback handler for success
+   
+      request.done(function (response, textStatus, jqXHR){
+         //console.log(response)
+         var jsonObject = response;
+         var siteCount = 0;
+            $("#search-results-heading").text("Search Results");
+            var formatedText = "";
+
+            jsonObject.prices.forEach(
+               function(item, index) {
+               siteCount++;
+               var value = item.value;
+               const volume = item.volume;
+               var name = item.name;
+               tableData.push({"Country": name, "Year": volume, "GDP": value})
+               }
+            );
+               });
   
        table.appendRows(tableData);
        doneCallback();
