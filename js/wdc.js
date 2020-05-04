@@ -25,7 +25,7 @@
     // This function is called when data is required from the
     // Web Data Connector.
     myConnector.getData = function (table, doneCallback) {
-      tableData = [];
+      //tableData = [];
       tableData.push({"Country": "before2", "Year": "2010", "GDP": "1.2"});
       var request;
       request = $.ajax({
@@ -40,7 +40,7 @@
          //console.log(response)
          var jsonObject = response;
          tableData = [];
-         tableData.push({"Country": "inbetween", "Year": "2010", "GDP": "1.2"});
+         //tableData.push({"Country": "inbetween", "Year": "2010", "GDP": "1.2"});
          jsonObject.prices.forEach(
             function(item, index) {
             var value = item.value;
@@ -49,14 +49,12 @@
             tableData.push({"Country": "name", "Year": "2010", "GDP": "1.2"});
             }
          );
-         tableData.push({"Country": "inbetween2", "Year": "2010", "GDP": "1.2"});
-         console.log(tableData)
+         //tableData.push({"Country": "inbetween2", "Year": "2010", "GDP": "1.2"});
+         //console.log(tableData)
          table.appendRows(tableData);
+         doneCallback();
             });
-      tableData.push({"Country": "after2", "Year": "2010", "GDP": "1.2"});
-  
-      table.appendRows(tableData);
-      doneCallback();
+      
     };
   
     // This is reqired to register the Web Data Connector.
