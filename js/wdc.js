@@ -4,19 +4,55 @@
     // describes the information returned by hte WDC.
     myConnector.getSchema = function (schemaCallback) {
        var cols = [{
-          id: "Country",
+          id: "exchange",
           dataType: tableau.dataTypeEnum.string
        }, {
-          id: "Year",
-          dataType: tableau.dataTypeEnum.int
-       }, {
-          id: "GDP",
+         id: "name",
+         dataType: tableau.dataTypeEnum.string
+      }, {
+         id: "url",
+         dataType: tableau.dataTypeEnum.string
+      }, {
+         id: "code",
+         dataType: tableau.dataTypeEnum.string
+      }, {
+          id: "value",
           dataType: tableau.dataTypeEnum.float
+       }, {
+         id: "change",
+         dataType: tableau.dataTypeEnum.float
+      }, {
+         id: "changePercentage",
+         dataType: tableau.dataTypeEnum.float
+      }, {
+         id: "turnover",
+         dataType: tableau.dataTypeEnum.float
+      }, {
+         id: "open",
+         dataType: tableau.dataTypeEnum.float
+      }, {
+         id: "high",
+         dataType: tableau.dataTypeEnum.float
+      }, {
+         id: "low",
+         dataType: tableau.dataTypeEnum.float
+      }, {
+         id: "volume",
+         dataType: tableau.dataTypeEnum.float
+      }, {
+         id: "status",
+         dataType: tableau.dataTypeEnum.string
+      }, {
+         id: "chartFileUrl",
+         dataType: tableau.dataTypeEnum.string
+      }, {
+          id: "updatedAt",
+          dataType: tableau.dataTypeEnum.string
        }];
   
        var tableSchema = {
           id: "WDC1",
-          alias: "GDP by Country and Year",
+          alias: "Mubasher web data connector",
           columns: cols
        };
        schemaCallback([tableSchema]);
@@ -38,10 +74,22 @@
          tableData = [];
          jsonObject.prices.forEach(
             function(item, index) {
-            var value = item.value;
-            const volume = item.volume;
-            var name = item.name;
-            tableData.push({"Country": name, "Year": volume, "GDP": value});
+            tableData.push({"exchange": item.exchange,
+                            "name": item.name,
+                            "url": item.url,
+                            "code": item.code,
+                            "value": item.value,
+                            "change": item.change,
+                            "changePercentage": item.changePercentage,
+                            "turnover": item.turnover,
+                            "open": item.open,
+                            "high": item.high,
+                            "low": item.low,
+                            "volume": item.volume,
+                            "status": item.status,
+                            "chartFileUrl": item.chartFileUrl,
+                            "updatedAt": item.updatedAt
+                           });
             }
          );
          table.appendRows(tableData);
@@ -49,7 +97,7 @@
             });
       
     };
-    
+
     // This is reqired to register the Web Data Connector.
     tableau.registerConnector(myConnector);
     // Once the document has loaded we will attached functionality
