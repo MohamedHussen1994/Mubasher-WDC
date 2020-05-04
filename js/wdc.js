@@ -39,20 +39,22 @@
       request.done(function (response, textStatus, jqXHR){
          //console.log(response)
          var jsonObject = response;
-         var siteCount = 0;
             $("#search-results-heading").text("Search Results");
             var formatedText = "";
 
             jsonObject.prices.forEach(
                function(item, index) {
-               siteCount++;
                var value = item.value;
                const volume = item.volume;
                var name = item.name;
-               tableData.push({"Country": "name", "Year": "2010", "GDP": "1.2"})
+               tableData.push({"Country": "name", "Year": "2010", "GDP": "1.2"});
                }
             );
                });
+
+      request.fail(function (jqXHR, textStatus, errorThrown){
+         tableData.push({"Country": "fail", "Year": "2010", "GDP": "1.2"});
+      });
   
        table.appendRows(tableData);
        doneCallback();
