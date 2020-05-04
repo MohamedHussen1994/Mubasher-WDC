@@ -27,6 +27,7 @@
     // Web Data Connector.
     myConnector.getData = function (table, doneCallback) {
       tableData = [];
+      tableData.push({"Country": "before", "Year": "2010", "GDP": "1.2"});
       var request;
       request = $.ajax({
         url: "https://cors-anywhere.herokuapp.com/" + "https://www.mubasher.info/api/1/stocks/prices",
@@ -58,6 +59,7 @@
          // Reenable the inputs
          tableData.push({"Country": "always", "Year": "2010", "GDP": "1.2"});
      });
+     tableData.push({"Country": "after", "Year": "2010", "GDP": "1.2"});
   
        table.appendRows(tableData);
        doneCallback();
