@@ -37,8 +37,9 @@
       // Callback handler for success
    
       request.done(function (response, textStatus, jqXHR){
-         /*//console.log(response)
+         //console.log(response)
          var jsonObject = response;
+         tableData = [];
          tableData.push({"Country": "inbetween", "Year": "2010", "GDP": "1.2"});
          jsonObject.prices.forEach(
             function(item, index) {
@@ -47,7 +48,7 @@
             var name = item.name;
             tableData.push({"Country": "name", "Year": "2010", "GDP": "1.2"});
             }
-         );*/
+         );
          tableData.push({"Country": "inbetween2", "Year": "2010", "GDP": "1.2"});
          console.log(tableData)
          table.appendRows(tableData);
