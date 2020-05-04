@@ -26,12 +26,12 @@
     // This function is called when data is required from the
     // Web Data Connector.
     myConnector.getData = function (table, doneCallback) {
-       tableData = [];
-       var request;
-       request = $.ajax({
-         url: "https://cors-anywhere.herokuapp.com/" + "https://www.mubasher.info/api/1/stocks/prices",
-         type: "GET",
-         data: {country: 'eg'}
+      tableData = [];
+      var request;
+      request = $.ajax({
+        url: "https://cors-anywhere.herokuapp.com/" + "https://www.mubasher.info/api/1/stocks/prices",
+        type: "GET",
+        data: {country: 'eg'}
       });
    
       // Callback handler for success
@@ -39,8 +39,6 @@
       request.done(function (response, textStatus, jqXHR){
          //console.log(response)
          var jsonObject = response;
-            $("#search-results-heading").text("Search Results");
-            var formatedText = "";
 
             jsonObject.prices.forEach(
                function(item, index) {
